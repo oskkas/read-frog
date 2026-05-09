@@ -5,6 +5,7 @@ import { StateMessage } from "./state-message"
 import { SubtitlesSettingsPanel } from "./subtitles-settings-panel"
 import { SubtitlesUIContext } from "./subtitles-ui-context"
 import { SubtitlesView } from "./subtitles-view"
+import { SubtitleWordPopup } from "./word-popup"
 
 export function SubtitlesContainer() {
   const { stateData, isVisible } = useAtomValue(subtitlesDisplayAtom)
@@ -22,6 +23,8 @@ export function SubtitlesContainer() {
           </>
         )}
       </div>
+
+      <SubtitleWordPopup />
 
       {!ui?.embedded && (
         <div className="absolute inset-0 z-40 overflow-visible">

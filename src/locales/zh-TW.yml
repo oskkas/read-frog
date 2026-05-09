@@ -204,6 +204,7 @@ options:
         tts: 文字轉語音
         inputTranslation: 輸入翻譯
         videoSubtitles: 影片字幕
+        videoSubtitles_wordLookup: Subtitle Word Lookup
     translationConfig:
       model:
         title: 模型
@@ -769,6 +770,24 @@ options:
       fontWeight: 字重
       backgroundOpacity: 背景透明度
       reset: 重置為預設值
+    wordLookup:
+      title: Word Lookup
+      description: Click words in the source subtitle to pause the video and open a compact dictionary popup.
+      interactiveWords: Interactive Words
+      provider: AI Provider
+      noProvider: Select an AI provider
+      customPromptHint: Custom word lookup prompts can be configured from the options page.
+      customPrompts:
+        title: Custom Word Lookup Prompts
+        description: Customize prompt templates for subtitle word lookup.
+        editPrompt:
+          promptCellInput:
+            input: Clicked word
+            targetLanguage: Target language
+            sentence: Subtitle sentence
+            sentenceTranslation: Subtitle sentence translation
+            sourceLanguage: Source language
+            level: Learner level
     aiSegmentation:
       title: AI 智能斷句
       enable: 啟用 AI 智能斷句

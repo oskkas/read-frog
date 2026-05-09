@@ -24,6 +24,7 @@ export const ANALYTICS_SURFACE = {
   TRANSLATION_HUB: "translation_hub",
   VIDEO_SUBTITLES: "video_subtitles",
   VIDEO_SUBTITLES_AUTO: "video_subtitles_auto",
+  SUBTITLE_WORD_POPUP: "subtitle_word_popup",
   TTS_SETTINGS: "tts_settings",
 } as const
 

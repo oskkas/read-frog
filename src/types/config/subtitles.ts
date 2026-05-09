@@ -30,12 +30,19 @@ export const subtitlePositionSchema = z.object({
   anchor: z.enum(["top", "bottom"]),
 })
 
+export const wordLookupConfigSchema = z.object({
+  providerId: z.string().nonempty(),
+  customPromptsConfig: customPromptsConfigSchema,
+})
+
 export const videoSubtitlesSchema = z.object({
   enabled: z.boolean(),
   autoStart: z.boolean(),
   providerId: z.string().nonempty(),
   style: subtitlesStyleSchema,
   aiSegmentation: z.boolean(),
+  interactiveWords: z.boolean(),
+  wordLookup: wordLookupConfigSchema,
   requestQueueConfig: requestQueueConfigSchema,
   batchQueueConfig: batchQueueConfigSchema,
   customPromptsConfig: customPromptsConfigSchema,
@@ -49,4 +56,5 @@ export type SubtitleTextStyle = z.infer<typeof subtitleTextStyleSchema>
 export type SubtitleContainerStyle = z.infer<typeof subtitleContainerStyleSchema>
 export type SubtitlesStyle = z.infer<typeof subtitlesStyleSchema>
 export type SubtitlePosition = z.infer<typeof subtitlePositionSchema>
+export type WordLookupConfig = z.infer<typeof wordLookupConfigSchema>
 export type VideoSubtitles = z.infer<typeof videoSubtitlesSchema>

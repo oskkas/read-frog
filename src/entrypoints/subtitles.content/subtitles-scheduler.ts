@@ -1,5 +1,5 @@
 import type { StateData, SubtitlesFragment, SubtitlesState } from "@/utils/subtitles/types"
-import { currentSubtitleAtom, currentTimeMsAtom, subtitlesStateAtom, subtitlesStore, subtitlesVisibleAtom } from "./atoms"
+import { currentSubtitleAtom, currentTimeMsAtom, subtitlesStateAtom, subtitlesStore, subtitlesVisibleAtom, videoElementRefAtom } from "./atoms"
 
 const ERROR_STATE_AUTO_HIDE_MS = 5_000
 
@@ -16,6 +16,7 @@ export class SubtitlesScheduler {
 
   constructor({ videoElement }: { videoElement: HTMLVideoElement }) {
     this.videoElement = videoElement
+    subtitlesStore.set(videoElementRefAtom, videoElement)
     this.attachListeners()
   }
 
@@ -74,6 +75,7 @@ export class SubtitlesScheduler {
   stop() {
     this.isActive = false
     this.detachListeners()
+    subtitlesStore.set(videoElementRefAtom, null)
     this.updateVisibility()
   }
 

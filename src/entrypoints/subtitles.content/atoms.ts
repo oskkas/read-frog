@@ -20,6 +20,20 @@ export const subtitlesSettingsPanelOpenAtom = atom<boolean>(false)
 
 export const subtitlesSettingsPanelViewAtom = atom<ViewId>(ROOT_VIEW)
 
+export interface WordPopupState {
+  word: string
+  sentence: string
+  sentenceTranslation?: string
+  anchor: {
+    x: number
+    y: number
+  }
+}
+
+export const wordPopupAtom = atom<WordPopupState | null>(null)
+
+export const videoElementRefAtom = atom<HTMLVideoElement | null>(null)
+
 export interface SubtitlePosition {
   percent: number
   anchor: "top" | "bottom"

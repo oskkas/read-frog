@@ -204,6 +204,7 @@ options:
         tts: Chuyển văn bản thành giọng nói
         inputTranslation: Dịch đầu vào
         videoSubtitles: Phụ đề video
+        videoSubtitles_wordLookup: Subtitle Word Lookup
     translationConfig:
       model:
         title: Mô hình
@@ -769,6 +770,24 @@ options:
       fontWeight: Độ đậm chữ
       backgroundOpacity: Độ trong suốt nền
       reset: Đặt lại về mặc định
+    wordLookup:
+      title: Word Lookup
+      description: Click words in the source subtitle to pause the video and open a compact dictionary popup.
+      interactiveWords: Interactive Words
+      provider: AI Provider
+      noProvider: Select an AI provider
+      customPromptHint: Custom word lookup prompts can be configured from the options page.
+      customPrompts:
+        title: Custom Word Lookup Prompts
+        description: Customize prompt templates for subtitle word lookup.
+        editPrompt:
+          promptCellInput:
+            input: Clicked word
+            targetLanguage: Target language
+            sentence: Subtitle sentence
+            sentenceTranslation: Subtitle sentence translation
+            sourceLanguage: Source language
+            level: Learner level
     aiSegmentation:
       title: AI Phân đoạn thông minh
       enable: Bật AI Phân đoạn thông minh

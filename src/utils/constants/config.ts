@@ -19,7 +19,7 @@ export const GOOGLE_DRIVE_TOKEN_STORAGE_KEY = "__googleDriveToken"
 export const THEME_STORAGE_KEY = "theme"
 export const DETECTED_CODE_STORAGE_KEY = "detectedCode"
 export const DEFAULT_DETECTED_CODE = "eng" as const
-export const CONFIG_SCHEMA_VERSION = 70
+export const CONFIG_SCHEMA_VERSION = 71
 
 export const DEFAULT_FLOATING_BUTTON_POSITION = 0.66
 export const DEFAULT_FLOATING_BUTTON_SIDE: FloatingButtonSide = "right"
@@ -156,6 +156,11 @@ export const DEFAULT_CONFIG: Config = {
       },
     },
     aiSegmentation: false,
+    interactiveWords: true,
+    wordLookup: {
+      providerId: "openai-default",
+      customPromptsConfig: DEFAULT_TRANSLATE_PROMPTS_CONFIG,
+    },
     requestQueueConfig: {
       capacity: DEFAULT_REQUEST_CAPACITY,
       rate: DEFAULT_REQUEST_RATE,

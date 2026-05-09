@@ -204,6 +204,7 @@ options:
         tts: テキスト読み上げ
         inputTranslation: 入力翻訳
         videoSubtitles: 動画字幕
+        videoSubtitles_wordLookup: Subtitle Word Lookup
     translationConfig:
       model:
         title: モデル
@@ -769,6 +770,24 @@ options:
       fontWeight: フォントウェイト
       backgroundOpacity: 背景の透明度
       reset: デフォルトにリセット
+    wordLookup:
+      title: Word Lookup
+      description: Click words in the source subtitle to pause the video and open a compact dictionary popup.
+      interactiveWords: Interactive Words
+      provider: AI Provider
+      noProvider: Select an AI provider
+      customPromptHint: Custom word lookup prompts can be configured from the options page.
+      customPrompts:
+        title: Custom Word Lookup Prompts
+        description: Customize prompt templates for subtitle word lookup.
+        editPrompt:
+          promptCellInput:
+            input: Clicked word
+            targetLanguage: Target language
+            sentence: Subtitle sentence
+            sentenceTranslation: Subtitle sentence translation
+            sourceLanguage: Source language
+            level: Learner level
     aiSegmentation:
       title: AI スマート区切り
       enable: AI スマート区切りを有効にする

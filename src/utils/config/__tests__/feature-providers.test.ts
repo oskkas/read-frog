@@ -63,6 +63,10 @@ describe("feature providers", () => {
         videoSubtitles: {
           ...DEFAULT_CONFIG.videoSubtitles,
           providerId: "deleted-provider",
+          wordLookup: {
+            ...DEFAULT_CONFIG.videoSubtitles.wordLookup,
+            providerId: "deleted-provider",
+          },
         },
         selectionToolbar: {
           ...DEFAULT_CONFIG.selectionToolbar,
@@ -87,6 +91,7 @@ describe("feature providers", () => {
       expect(fallbacks).toEqual({
         "translate": "microsoft-translate-default",
         "videoSubtitles": "microsoft-translate-default",
+        "videoSubtitles.wordLookup": "openai-default",
         "selectionToolbar.translate": "microsoft-translate-default",
         "inputTranslation": "microsoft-translate-default",
       })
@@ -140,6 +145,7 @@ describe("feature providers", () => {
     it("returns null when all features have at least one compatible provider", () => {
       const remainingProviders = [
         getProviderById("microsoft-translate-default"),
+        getProviderById("openai-default"),
       ]
 
       expect(findFeatureMissingProvider(remainingProviders)).toBeNull()

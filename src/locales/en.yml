@@ -205,6 +205,7 @@ options:
         tts: Text to Speech
         inputTranslation: Input Translation
         videoSubtitles: Video Subtitles
+        videoSubtitles_wordLookup: Subtitle Word Lookup
     translationConfig:
       model:
         title: Model
@@ -884,6 +885,24 @@ options:
       fontWeight: Font Weight
       backgroundOpacity: Background Opacity
       reset: Reset to Default
+    wordLookup:
+      title: Word Lookup
+      description: Click words in the source subtitle to pause the video and open a compact dictionary popup.
+      interactiveWords: Interactive Words
+      provider: AI Provider
+      noProvider: Select an AI provider
+      customPromptHint: Custom word lookup prompts can be configured from the options page.
+      customPrompts:
+        title: Custom Word Lookup Prompts
+        description: Customize prompt templates for subtitle word lookup.
+        editPrompt:
+          promptCellInput:
+            input: Clicked word
+            targetLanguage: Target language
+            sentence: Subtitle sentence
+            sentenceTranslation: Subtitle sentence translation
+            sourceLanguage: Source language
+            level: Learner level
     aiSegmentation:
       title: AI Smart Segmentation
       enable: Enable AI Smart Segmentation

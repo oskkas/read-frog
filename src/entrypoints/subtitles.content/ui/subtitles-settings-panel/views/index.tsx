@@ -1,9 +1,10 @@
 import type { ComponentType, ReactNode } from "react"
 import { i18n } from "#imports"
-import { IconAdjustmentsHorizontal } from "@tabler/icons-react"
+import { IconAdjustmentsHorizontal, IconBook } from "@tabler/icons-react"
 import { StyleView } from "./style"
+import { WordLookupView } from "./word-lookup"
 
-export type ViewId = "main" | "style"
+export type ViewId = "main" | "style" | "wordLookup"
 export const ROOT_VIEW = "main" satisfies ViewId
 
 export interface SubpageConfig {
@@ -20,6 +21,12 @@ export const SUBPAGES: SubpageConfig[] = [
     title: i18n.t("options.videoSubtitles.style.title"),
     icon: <IconAdjustmentsHorizontal className="size-4" />,
     component: StyleView,
+  },
+  {
+    id: "wordLookup",
+    title: i18n.t("options.videoSubtitles.wordLookup.title"),
+    icon: <IconBook className="size-4" />,
+    component: WordLookupView,
   },
 ]
 

@@ -1,5 +1,6 @@
 export const WEB_PAGE_PROMPT_TOKENS = ["targetLanguage", "input", "webTitle", "webContent", "webSummary"] as const
 export const SUBTITLE_PROMPT_TOKENS = ["targetLanguage", "input", "videoTitle", "videoSummary"] as const
+export const SUBTITLE_WORD_LOOKUP_PROMPT_TOKENS = ["targetLanguage", "input", "sentence", "sentenceTranslation", "sourceLanguage", "level"] as const
 export const TOKENS = WEB_PAGE_PROMPT_TOKENS
 
 /**
@@ -15,6 +16,10 @@ export const WEB_CONTENT = WEB_PAGE_PROMPT_TOKENS[3]
 export const WEB_SUMMARY = WEB_PAGE_PROMPT_TOKENS[4]
 export const VIDEO_TITLE = SUBTITLE_PROMPT_TOKENS[2]
 export const VIDEO_SUMMARY = SUBTITLE_PROMPT_TOKENS[3]
+export const SENTENCE = SUBTITLE_WORD_LOOKUP_PROMPT_TOKENS[2]
+export const SENTENCE_TRANSLATION = SUBTITLE_WORD_LOOKUP_PROMPT_TOKENS[3]
+export const SOURCE_LANGUAGE = SUBTITLE_WORD_LOOKUP_PROMPT_TOKENS[4]
+export const LEVEL = SUBTITLE_WORD_LOOKUP_PROMPT_TOKENS[5]
 
 export const getTokenCellText = (token: string) => `{{${token}}}`
 
@@ -97,6 +102,28 @@ export const DEFAULT_TRANSLATE_PROMPTS_CONFIG = {
   promptId: null,
   patterns: [],
 }
+
+export const DEFAULT_SUBTITLE_WORD_LOOKUP_SYSTEM_PROMPT = `You are a concise dictionary for a ${getTokenCellText(LEVEL)} learner who speaks ${getTokenCellText(TARGET_LANGUAGE)}.
+
+## Task
+Explain the word from a video subtitle in ${getTokenCellText(TARGET_LANGUAGE)}.
+
+## Rules
+1. Be brief and practical for quick video watching.
+2. Focus on the meaning in the subtitle sentence.
+3. Include pronunciation only when useful.
+4. Do not include greetings or extra commentary.`
+
+export const DEFAULT_SUBTITLE_WORD_LOOKUP_PROMPT = `Word: ${getTokenCellText(INPUT)}
+Source language: ${getTokenCellText(SOURCE_LANGUAGE)}
+Sentence: ${getTokenCellText(SENTENCE)}
+Sentence translation: ${getTokenCellText(SENTENCE_TRANSLATION)}
+
+Return:
+- Part of speech
+- Brief definition
+- Meaning in this sentence
+- 2-3 synonyms or close alternatives`
 
 // === Subtitles Segmentation Prompts ===
 

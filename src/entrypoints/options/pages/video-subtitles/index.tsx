@@ -6,6 +6,8 @@ import { SubtitlesCustomPrompts } from "./subtitles-custom-prompts"
 import { SubtitlesRequestBatch } from "./subtitles-request-batch"
 import { SubtitlesRequestRate } from "./subtitles-request-rate"
 import { SubtitlesStyleSettings } from "./subtitles-style-settings"
+import { WordLookupConfig } from "./word-lookup-config"
+import { WordLookupPrompts } from "./word-lookup-prompts"
 
 export function VideoSubtitlesPage() {
   return (
@@ -13,6 +15,8 @@ export function VideoSubtitlesPage() {
       <div className="*:border-b [&>*:last-child]:border-b-0">
         <SubtitlesConfig />
         <SubtitlesStyleSettings />
+        <WordLookupConfig />
+        <WordLookupPrompts />
         <SubtitlesCustomPrompts />
         <SubtitlesRequestRate />
         <SubtitlesRequestBatch />

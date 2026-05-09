@@ -1,11 +1,16 @@
 // @vitest-environment jsdom
 import type { LangCodeISO6393 } from "@read-frog/definitions"
-import { render, screen } from "@testing-library/react"
+import { fireEvent, render, screen } from "@testing-library/react"
 import { createStore, Provider } from "jotai"
-import { describe, expect, it, vi } from "vitest"
+import { afterEach, describe, expect, it, vi } from "vitest"
 import { DEFAULT_CONFIG } from "@/utils/constants/config"
+import { subtitlesStore, videoElementRefAtom, wordPopupAtom } from "../../atoms"
 
 import { MainSubtitle, TranslationSubtitle } from "../subtitle-lines"
+
+afterEach(() => {
+  subtitlesStore.set(videoElementRefAtom, null)
+})
 
 const mockedAtoms = vi.hoisted(() => ({
   languageAtom: null as any,
@@ -69,6 +74,10 @@ describe("subtitle lines", () => {
 
   it("keeps main subtitle line without forced dir/lang attributes", () => {
     const store = createStoreWithLanguage("eng")
+    store.set(mockedAtoms.videoSubtitlesAtom, {
+      ...DEFAULT_CONFIG.videoSubtitles,
+      interactiveWords: false,
+    })
 
     render(
       <Provider store={store}>
@@ -79,5 +88,28 @@ describe("subtitle lines", () => {
     const line = screen.getByText("Hello world")
     expect(line).not.toHaveAttribute("dir")
     expect(line).not.toHaveAttribute("lang")
+  })
+
+  it("opens word popup state and pauses video when an interactive word is clicked", () => {
+    const store = createStoreWithLanguage("eng")
+    const pause = vi.fn()
+    subtitlesStore.set(videoElementRefAtom, {
+      paused: false,
+      pause,
+    } as unknown as HTMLVideoElement)
+
+    render(
+      <Provider store={store}>
+        <MainSubtitle content="Hello world" />
+      </Provider>,
+    )
+
+    fireEvent.click(screen.getByRole("button", { name: "Hello" }))
+
+    expect(pause).toHaveBeenCalledTimes(1)
+    expect(store.get(wordPopupAtom)).toMatchObject({
+      word: "Hello",
+      sentence: "Hello world",
+    })
   })
 })

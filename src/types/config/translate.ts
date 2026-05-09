@@ -70,6 +70,7 @@ export const customPromptsConfigSchema = z.object({
     }
   }
 })
+export type CustomPromptsConfig = z.infer<typeof customPromptsConfigSchema>
 
 export const pageTranslationShortcutSchema = z.string().superRefine((shortcut, ctx) => {
   if (isPageTranslationShortcutEmpty(shortcut)) {
